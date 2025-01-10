@@ -5,7 +5,7 @@ import math
 from colorama import Style, Fore
 from typing import List, Tuple, Dict, Any, Union, Optional
 
-def allocate_house_seats(states_number: int, populations: Tuple[int]) -> List[int]:
+def allocate_house_seats(states_number: int, populations: Tuple[int]) -> np.array:
     """
     Allocate the 435 House seats among the states based on their populations using the method of equal proportions.
 
@@ -14,13 +14,13 @@ def allocate_house_seats(states_number: int, populations: Tuple[int]) -> List[in
         populations (Tuple[int]): A tuple of state populations.
 
     Returns:
-        List[int]: A list of House seats allocated to each state.
+        np.array: A numpy array of House seats allocated to each state.
     """
     # Start with 1 seat for each state
-    seats = [1] * states_number
+    seats = np.ones(states_number, dtype=int)
 
     # Priority values for each state
-    priority_values = [pop / math.sqrt(seats[i] * (seats[i] + 1)) for i, pop in enumerate(populations)]
+    priority_values = np.array([pop / math.sqrt(seats[i] * (seats[i] + 1)) for i, pop in enumerate(populations)])
 
     # Assign the remaining 435 - states_number seats
     total_seats = 435
@@ -28,7 +28,7 @@ def allocate_house_seats(states_number: int, populations: Tuple[int]) -> List[in
 
     for _ in range(remaining_seats):
         # Find the state with the highest priority value
-        max_index = priority_values.index(max(priority_values))
+        max_index = np.argmax(priority_values)
 
         # Assign one more seat to that state
         seats[max_index] += 1
@@ -38,7 +38,7 @@ def allocate_house_seats(states_number: int, populations: Tuple[int]) -> List[in
 
     return seats
 
-def calculate_electors(states_number: int, populations: Tuple[int]) -> List[int]:
+def calculate_electors(states_number: int, populations: Tuple[int]) -> np.array:
     """ Calculates the electors (House Reps + Senators) for each state based on the population.
 
     Args:
@@ -46,12 +46,14 @@ def calculate_electors(states_number: int, populations: Tuple[int]) -> List[int]
         populations (Tuple[int]): A tuple of state populations
 
     Returns:
-        List[int]: A list of electors allocated to each state, ordered by the same index as the populations 
+        np.array: An array of electors allocated to each state, ordered by the same index as the populations 
         such that the ith element of the populations tuple corresponds to the ith element of the returned list
     """
 
-# Example usage:
-states_population = (1000000, 5000000, 10000000, 2000000)  # Example populations for 4 states
-states_number = len(states_population)
-house_seats = allocate_house_seats(states_number, states_population)
-# print(house_seats)  # Output: House seat allocations
+    house_electors = allocate_house_seats(states_number, populations)
+    
+    # For the total electors, add +2 to each state
+    total_electors = house_electors + 2
+    
+    return total_electors
+    

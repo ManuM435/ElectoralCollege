@@ -42,3 +42,5 @@ assert read_elecs_24 == data_elecs_24, Style.BRIGHT + Fore.RED + f'Error!\nOur D
 assert read_pops_24 == data_pops_24, Style.BRIGHT + Fore.RED + f'Error!\nOur Data was {read_pops_24} while\nTrue Data is {data_pops_24}' + Style.RESET_ALL
 
 print(Style.BRIGHT + Fore.GREEN + 'Tests passed!' + Style.RESET_ALL)
+
+print(electors_pred_24)
