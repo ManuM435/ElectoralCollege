@@ -118,3 +118,4 @@ print(Style.BRIGHT + Fore.GREEN + 'Tests passed!' + Style.RESET_ALL + '\n')
 #     print(f'True Data was {elecs_24_keys[i]}: {true_elecs_24_list[i]}')
 #     print(f'Our Prediction was {elecs_24_keys[i]}: {pred_elecs_24_list[i]}')
 #     print('')
+
