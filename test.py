@@ -34,13 +34,19 @@ data_pops_24 = {
 }
 
 pops_values_24 = tuple(data_pops_24.values())
-print(f"The pop values for 24 are {pops_values_24}")
 electors_pred_24 = calculate_electors(states_number=50, populations=pops_values_24)
+pred_elecs_24_list = electors_pred_24.tolist()
+true_elecs_24_list = list(data_elecs_24.values())
 
 # Tests
 assert read_elecs_24 == data_elecs_24, Style.BRIGHT + Fore.RED + f'Error!\nOur Data was {read_elecs_24} while\nTrue Data is {data_elecs_24}' + Style.RESET_ALL
 assert read_pops_24 == data_pops_24, Style.BRIGHT + Fore.RED + f'Error!\nOur Data was {read_pops_24} while\nTrue Data is {data_pops_24}' + Style.RESET_ALL
+assert pred_elecs_24_list == true_elecs_24_list, Style.BRIGHT + Fore.RED + f'Error!\nOur Data was {pred_elecs_24_list} while\nTrue Data is {true_elecs_24_list}' + Style.RESET_ALL
 
-print(Style.BRIGHT + Fore.GREEN + 'Tests passed!' + Style.RESET_ALL)
+print(Style.BRIGHT + Fore.GREEN + 'Tests passed!' + Style.RESET_ALL + '\n')
 
-print(electors_pred_24)
+# elecs_24_keys = list(data_elecs_24.keys())
+# for i in range(len(elecs_24_keys)):
+#     print(f'True Data was {elecs_24_keys[i]}: {true_elecs_24_list[i]}')
+#     print(f'Our Prediction was {elecs_24_keys[i]}: {pred_elecs_24_list[i]}')
+#     print('')
