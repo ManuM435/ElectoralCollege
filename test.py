@@ -33,7 +33,7 @@ data_pops_24 = {
     "WI": 5893718, "WY": 576851
 }
 
-pops_values_24 = tuple(data_pops_24.values())
+pops_values_24 = tuple(read_pops_24.values())
 electors_pred_24 = calculate_electors(states_number=50, populations=pops_values_24)
 pred_elecs_24_list = electors_pred_24.tolist()
 true_elecs_24_list = list(data_elecs_24.values())
