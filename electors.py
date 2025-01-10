@@ -54,4 +54,4 @@ def calculate_electors(states_number: int, populations: Tuple[int]) -> List[int]
 states_population = (1000000, 5000000, 10000000, 2000000)  # Example populations for 4 states
 states_number = len(states_population)
 house_seats = allocate_house_seats(states_number, states_population)
-print(house_seats)  # Output: House seat allocations
+# print(house_seats)  # Output: House seat allocations
