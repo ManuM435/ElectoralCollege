@@ -1,4 +1,38 @@
 # Ignore cache files
 *.cache
-# Ignore Python cache files
+
+# Byte-compiled files
+*.pyc
+*.pyo
+*.pyd
+
+# Cache directories
 __pycache__/
+
+# Virtual environment
+venv/
+env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# pytest cache
+.pytest_cache/
+
+# mypy cache
+.mypy_cache/
+
+# Django files
+*.log
+*.pot
+*.py[cod]
+*.sqlite3
+db.sqlite3
+
+# Others
+*.egg-info/
+.eggs/
+.coverage
+*.egg
+.DS_Store
+*.swp
